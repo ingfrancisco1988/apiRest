@@ -1,6 +1,10 @@
-package ar.com.repo.APIrest.DTOUser;
+package ar.com.repo.APIrest.DTO;
+
+
 
 import java.io.Serializable;
+
+
 
 public class DtoUser implements Serializable {
     private Long id;
@@ -49,3 +53,6 @@ public class DtoUser implements Serializable {
         this.userLoans = userLoans;
     }
 }
+
+
+
