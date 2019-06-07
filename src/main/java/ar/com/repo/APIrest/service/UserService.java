@@ -1,10 +1,8 @@
 package ar.com.repo.APIrest.service;
 
-import ar.com.repo.APIrest.DTO.DtoLoan;
+
 import ar.com.repo.APIrest.DTO.DtoUser;
 import ar.com.repo.APIrest.model.User;
-import ar.com.repo.APIrest.model.UserLoan;
-import ar.com.repo.APIrest.repository.LoanRepository;
 import ar.com.repo.APIrest.repository.UserRepository;
 
 
@@ -23,7 +21,7 @@ import java.util.List;
     private UserRepository repository;
 
     /* servicios para user*/
-    public DtoUser  get(long userId) {
+    public DtoUser  get(Integer userId) {
       User user = repository.findAllById(userId);
 
       DtoUser dtoUser = new DtoUser();
@@ -31,7 +29,7 @@ import java.util.List;
       dtoUser.setUser_email(user.getEmail());
       dtoUser.setUserFirstName(user.getUserFirstName());
       dtoUser.setUserLastName(user.getUserLastName());
-      dtoUser.setUserLoans(user.getLoans());
+      dtoUser.setUserLoans(user.getLoanList());
       dtoUser.setId(user.getId());
       return  (dtoUser);
     }
@@ -45,13 +43,7 @@ import java.util.List;
     public User create(User user) {
       return repository.save(user);
     }
-    /*Servicios para loans*/
-    @Autowired
-    private LoanRepository loanRepository;
 
-    public UserLoan createLoan(UserLoan userLoan){
-      return loanRepository.save(userLoan);
-    }
   }
 
 
